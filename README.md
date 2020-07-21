@@ -1,2 +1,2 @@
 # tg_exhchange_rate_bot
-Telegram bot на Python, через который можно узнать курсы валют в Беларусбанке.
+Telegram bot written in python which provides exchange rates in Belarusbank.
