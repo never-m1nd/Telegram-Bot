@@ -5,10 +5,10 @@ from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 import keyboard as kb
 import bank_handler as bh
+import datetime
 
 logging.basicConfig(level=logging.DEBUG)
 token = "1075506655:AAFsrraNqUXYyC8DFTrIn2Yy4Uh7bR1Uhho"
-
 
 bot = Bot(token=token)
 dp = Dispatcher(bot)
@@ -18,11 +18,12 @@ exchange_rate = bh.ExchangeRate()
 
 def get_text():
     text = f"Самый популярный курс {exchange_rate.currency} в отделениях Беларусбанка " \
-           f"в городе {exchange_rate.city}\n{exchange_rate.get_output(exchange_rate.get_exchange_rate())}"
+           f"в городе {exchange_rate.city} на {datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S')}" \
+           f"\n{exchange_rate.get_output(exchange_rate.get_exchange_rate())}"
     return text
 
 
-@dp.message_handler(commands=["start", "Начать работу"])
+@dp.message_handler(commands=["start"])
 async def process_start(message: types.Message):
     await message.reply(get_text(), reply_markup=kb.get_main_keyboard())
 
