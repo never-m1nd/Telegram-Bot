@@ -28,7 +28,7 @@ async def process_start(message: types.Message):
     await message.reply(get_text(), reply_markup=kb.get_main_keyboard())
 
 
-@dp.callback_query_handler(lambda c: c.data == 'settings')
+@dp.callback_query_handler(text="settings")
 async def process_callback_button1(callback_query: types.CallbackQuery):
     await bot.answer_callback_query(callback_query.id)
     await bot.edit_message_text('Настройки', chat_id=callback_query.from_user.id,
@@ -36,7 +36,7 @@ async def process_callback_button1(callback_query: types.CallbackQuery):
                                 reply_markup=kb.get_setting_keyboard())
 
 
-@dp.callback_query_handler(lambda c: c.data == 'cities')
+@dp.callback_query_handler(text="cities")
 async def process_callback_button2(callback_query: types.CallbackQuery):
     await bot.answer_callback_query(callback_query.id)
     kb.get_first_letter_of_city_keyboard()
@@ -45,7 +45,7 @@ async def process_callback_button2(callback_query: types.CallbackQuery):
                                         reply_markup=kb.get_first_letter_of_city_keyboard())
 
 
-@dp.callback_query_handler(lambda c: 'change' in c.data)
+@dp.callback_query_handler(text_contains="change")
 async def process_callback_button2(callback_query: types.CallbackQuery):
     data = callback_query.data
     if "city" in data:
@@ -60,7 +60,7 @@ async def process_callback_button2(callback_query: types.CallbackQuery):
                                 reply_markup=kb.get_main_keyboard())
 
 
-@dp.callback_query_handler(lambda c: c.data == 'currency')
+@dp.callback_query_handler(text="currency")
 async def process_callback_button3(callback_query: types.CallbackQuery):
     await bot.answer_callback_query(callback_query.id)
     await bot.edit_message_reply_markup(chat_id=callback_query.from_user.id,
@@ -68,7 +68,7 @@ async def process_callback_button3(callback_query: types.CallbackQuery):
                                         reply_markup=kb.get_currency_list())
 
 
-@dp.callback_query_handler(lambda c: c.data == 'update')
+@dp.callback_query_handler(text="update")
 async def process_callback_button3(callback_query: types.CallbackQuery):
     await bot.answer_callback_query(callback_query.id)
     await bot.edit_message_text(get_text(), chat_id=callback_query.from_user.id,
@@ -76,7 +76,7 @@ async def process_callback_button3(callback_query: types.CallbackQuery):
                                 reply_markup=kb.get_main_keyboard())
 
 
-@dp.callback_query_handler(lambda c: c.data == 'back')
+@dp.callback_query_handler(text="back")
 async def process_callback_button4(callback_query: types.CallbackQuery):
     await bot.answer_callback_query(callback_query.id)
     await bot.edit_message_text(get_text(), chat_id=callback_query.from_user.id,
