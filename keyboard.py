@@ -10,7 +10,7 @@ def get_main_keyboard():
     return inline_kb1
 
 
-def get_setting_keyboard(language):
+def get_setting_keyboard():
     inline_button_2 = InlineKeyboardButton("       Город       ", callback_data="cities")
     inline_button_3 = InlineKeyboardButton("       Валюта       ", callback_data="currency")
     inline_button_4 = InlineKeyboardButton("   Назад  ", callback_data="back")
