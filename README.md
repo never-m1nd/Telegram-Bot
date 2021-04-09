@@ -1,1 +1,1 @@
-#Telegram bot which provides exchange rates in Belarusbank.
+# Telegram bot which provides exchange rates in Belarusbank.
